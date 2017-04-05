@@ -1,0 +1,17 @@
+{
+	"data_dir": "data",
+	"check_update_interval": "10s",
+	"ports": {
+		"http": 8500
+	},
+	"log_level": "err",
+	"checks": [
+		{
+			"id": "sys-health",
+			"name": "System Information",
+			"script": "zeus\\Zeus.exe machine -f",
+			"interval": "10s",
+			"timeout": "1m"
+		}
+	]
+}
