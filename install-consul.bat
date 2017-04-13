@@ -8,7 +8,7 @@ set localhost=%1
 set joinNode=%2
 echo localhost:%localhost%
 echo joining:%joinNode%
-set serviceBinPath= %~dp0join-cluster.bat
+set serviceBinPath= %~dp0single-node.bat
 echo creating service %serviceBinPath%
 nssm install consul %serviceBinPath% %localhost% %joinNode%
 nssm start consul
