@@ -28,13 +28,13 @@ echo tagValue: %tagValue%
 echo { "retry_join_azure": { "subscription_id": "%subscriptionId%", "tenant_id": "%tenantId%", "client_id": "%clientId%", "secret_access_key": "%secretAccessKey%" } } > .\config\azure.json
 
 set serviceBinPath= %~dp0join-cluster-azure.bat
-echo creating service %serviceBinPath%
+echo creating service %serviceBinPath% 
 nssm install consul %serviceBinPath% %localhost% %tagName% %tagValue%
 nssm start consul
 echo Done.
 goto :eof
 :usage
 echo Missing arguments!
-echo USAGE: create-service.bat MachineIpAddress AzureSubscriptionId AzureTenantId AzureClientId AzureSecret AzureTagName AzireTagValue
-echo EXAMPLE: create-service.bat 10.0.0.28 f112e765-a979-4ff0-90e6-f51ed0650a90 1f3c0620-b1bf-46d0-bceb-d4ef97bbbc91 4fc22021-e319-431e-b014-c09f96d3e018 e5901352-757a-48c7-a6ac-0486ebd525c7 consul production-env
+echo USAGE: install-consul-azure.bat MachineIpAddress AzureSubscriptionId AzureTenantId AzureClientId AzureSecret AzureTagName AzireTagValue
+echo EXAMPLE: install-consul-azure.bat 10.0.0.28 f112e765-a979-4ff0-90e6-f51ed0650a90 1f3c0620-b1bf-46d0-bceb-d4ef97bbbc91 4fc22021-e319-431e-b014-c09f96d3e018 e5901352-757a-48c7-a6ac-0486ebd525c7 consul production-env
 exit /B 1
