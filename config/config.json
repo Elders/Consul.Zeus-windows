@@ -13,5 +13,6 @@
 			"interval": "10s",
 			"timeout": "1m"
 		}
-	]
+	],
+	"enable_script_checks": true
 }

@@ -25,11 +25,12 @@ echo secretAccessKey: %secretAccessKey%
 echo tagName: %tagName%
 echo tagValue: %tagValue%
 
-echo { "retry_join_azure": { "subscription_id": "%subscriptionId%", "tenant_id": "%tenantId%", "client_id": "%clientId%", "secret_access_key": "%secretAccessKey%" } } > .\config\azure.json
+echo { "retry_join": ["provider=azure tag_name=%tagName% tag_value=%tagValue% tenant_id=%tenantId% client_id=%clientId% subscription_id=%subscriptionId% secret_access_key=%secretAccessKey%"]} > .\config\azure.json
+
 
 set serviceBinPath= %~dp0join-cluster-azure.bat
 echo creating service %serviceBinPath% 
-nssm install consul %serviceBinPath% %localhost% %tagName% %tagValue%
+nssm install consul %serviceBinPath% %localhost%
 nssm start consul
 echo Done.
 goto :eof
