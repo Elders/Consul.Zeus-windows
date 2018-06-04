@@ -13,12 +13,11 @@ param(
 
     [string]$localnodeIP, 
 
-    [Parameter(mandatory = $true)]
     [string[]]$ConsulArgs,
 
     [string[]]$ZeusArgs = ("machine","-f"),
 
-    [string[]]$CheckInterval = '1m'
+    [string[]]$CheckInterval = '5m'
 )
 
 Add-Type -AssemblyName System.Web
@@ -72,4 +71,4 @@ else {
 }
 
 Start-Process -FilePath "nssm.exe" -ArgumentList "install consul $path\consul.exe agent -advertise=$localnodeIP -client=$localnodeIP -config-dir=config $ConsulArgs"
-Write-host "install consul $path\consul.exe agent -advertise=$localnodeIP -client=$localnodeIP -config-dir=config $ConsulArgs"
+Start-Process -FilePath "nssm.exe" -ArgumentList "start consul"
