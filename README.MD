@@ -21,7 +21,7 @@ Setting this variable will make consul execute Zeus checks on specified interval
 
 Zeus Arguments can be passed in a comma seperated list, keeping in mind that we escape the hyphen with *`*, as follows:
 
-> powershell .\install-consul.ps1 -ZeusArgs machine,`-f,`-e,cpu.usage:below:30
+> powershell .\install-consul.ps1 -ZeusArgs machine,\`-f,\`-e,cpu.usage:below:30
 
 This will return default information about the machine and will register an error if CPU usage is above 30 percent.
 For more information about the extent of Zeus arguments you can check [Zeus Documentation](https://github.com/Elders/Zeus)
@@ -30,7 +30,7 @@ For more information about the extent of Zeus arguments you can check [Zeus Docu
 
 Upon installation you can pass on all Consul arguments in a comma seperated list, keeping in mind that we escape the hyphen with *`*, as follows:
 
-> powershell .\install-consul.ps1 -ConsulArgs `-server,`-ui,`-bootstrap,`-datacenter=Test
+> powershell .\install-consul.ps1 -ConsulArgs \`-server,\`-ui,\`-bootstrap,\`-datacenter=Test
 
 This example will install consul in Server mode and bootstrap it. It will also enable to Web UI and set the datacentername to Test. For more information on Consul options. you can read the full [Consul](https://www.consul.io/docs/agent/cloud-auto-join.html) documentation.
 
@@ -40,7 +40,7 @@ Consul-Zeus supports Azure Service Discovery based on Azure tags. You can use th
 
 Here is an example installation.
 
-> powershell .\install-consul.ps1 -AzureSubscriptionId {} -AzureTenantId {} -AzureClientId {} -AzureSecret {} -AzureTagValue {} -ConsulArgs `-server,`-ui,`-bootstrap` -CheckInterval "10m" -ZeusArgs machine,`-f,`-e,cpu.usage:below:30
+> powershell .\install-consul.ps1 -AzureSubscriptionId {} -AzureTenantId {} -AzureClientId {} -AzureSecret {} -AzureTagValue {} -ConsulArgs \`-server,\`-ui,\`-bootstrap\` -CheckInterval "10m" -ZeusArgs machine,\`-f,\`-e,cpu.usage:below:30
 
 ##### Configuration
 Consul uses the configuration files in the Config directory, should you need to change those post installation, you can edit the files directly and just restart the Consul Service.
