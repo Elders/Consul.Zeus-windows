@@ -29,6 +29,11 @@ if (!$localnodeIP) {
 
 $AzureSecret   = [System.Web.HttpUtility]::UrlEncode($AzureSecret)
 $path = (Get-Item -Path ".\").FullName
+
+if(!(Test-Path -Path $path\config )){
+    New-Item -ItemType directory -Path $path\config
+}
+
 $ZeusArgs = ,"zeus\Zeus.exe" + $ZeusArgs
 $jsonConfig = [ordered]@{
     data_dir= "data"
@@ -56,7 +61,7 @@ $destination = "$path\consul.zip"
 $client = New-Object System.Net.WebClient
 $client.DownloadFile("https://releases.hashicorp.com/consul/1.1.0/consul_1.1.0_windows_amd64.zip", $destination)
 
-Expand-Archive -path "$path\consul.zip"  -DestinationPath $path -Force
+Expand-Archive -path "$destination"  -DestinationPath $path -Force
 
 if (!$AzureSubscriptionId -and !$AzureClientId -and !$AzureTenantId -and !$AzureSecret -and !$AzureTagValue) {
     Write-Host "Configuring without Azure integration"
