@@ -40,7 +40,7 @@ Consul-Zeus supports Azure Service Discovery based on Azure tags. You can use th
 
 Here is an example installation.
 
-> powershell .\install-consul.ps1 -AzureSubscriptionId {} -AzureTenantId {} -AzureClientId {} -AzureSecret {} -AzureTagValue {} -ConsulArgs \`-server,\`-ui,\`-bootstrap\` -CheckInterval "10m" -ZeusArgs machine,\`-f,\`-e,cpu.usage:below:30
+> powershell .\install-consul.ps1 -AzureSubscriptionId {} -AzureTenantId {} -AzureClientId {} -AzureSecret {} -AzureTagValue {} -ConsulArgs \`-server,\`-ui,\`-bootstrap -CheckInterval "10m" -ZeusArgs machine,\`-f,\`-e,cpu.usage:below:30
 
 ##### Configuration
 Consul uses the configuration files in the Config directory, should you need to change those post installation, you can edit the files directly and just restart the Consul Service.
